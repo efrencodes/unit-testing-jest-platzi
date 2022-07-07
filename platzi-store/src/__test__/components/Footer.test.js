@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../../components/Footer';
+import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 describe('Componente <Footer />', () => {
@@ -14,5 +15,12 @@ describe('Componente <Footer />', () => {
     expect(footer.find('.Footer-copy').text()).toEqual(
       'Todos los Izquierdos Reservados'
     );
+  });
+});
+
+describe('Footer Snapshot', () => {
+  test('Comprobar la UI del componente Footer', () => {
+    const footer = create(<Footer />);
+    expect(footer.toJSON()).toMatchSnapshot();
   });
 });
